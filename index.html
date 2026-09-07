@@ -174,6 +174,8 @@
   .dd-trigger[aria-expanded="true"] .dd-chev { transform: rotate(180deg); }
   .dd-panel { position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 45; background: var(--panel-2); border: 1px solid var(--line); border-radius: 14px; padding: 8px; box-shadow: 0 26px 54px rgba(0,0,0,0.55); max-height: 340px; overflow-y: auto; }
   .dd-panel[hidden] { display: none; }
+  .dd-group { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted-2); font-weight: 500; padding: 13px 12px 7px; }
+  .dd-group:first-child { padding-top: 5px; }
   .ptab { display: flex; align-items: center; gap: 12px; text-align: left; width: 100%; cursor: pointer;
     background: transparent; border: 1px solid var(--line-soft); color: var(--muted); padding: 12px 15px; border-radius: 12px;
     font-family: var(--body); font-size: 15px; transition: all .2s ease; }
@@ -558,24 +560,26 @@
             <svg class="dd-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="proto-tabs dd-panel" id="ddPanel" role="listbox" hidden>
-          <button class="ptab on" data-proto="gym" role="tab" aria-selected="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3v10H4zM17 7h3v10h-3zM7 12h10" stroke-linecap="round"/></svg> Gimnasio</button>
-          <button class="ptab" data-proto="clinic" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg> Clínica / Consultorio</button>
-          <button class="ptab" data-proto="crm" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18v-5M10 18V8M16 18v-3M22 18V6" stroke-linecap="round"/></svg> CRM / Ventas</button>
-          <button class="ptab" data-proto="resto" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3v8M6 11a2 2 0 002-2V3M6 11v10M18 3c-2 0-3 3-3 6s1 3 3 3v9" stroke-linecap="round" stroke-linejoin="round"/></svg> Restaurante</button>
-          <button class="ptab" data-proto="shop" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12l-1 12H7zM9 7a3 3 0 016 0" stroke-linecap="round" stroke-linejoin="round"/></svg> Tienda online</button>
-          <button class="ptab" data-proto="barber" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8 8l12 10M8 16L20 6" stroke-linecap="round"/></svg> Barbería / Spa</button>
-          <button class="ptab" data-proto="vet" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8.5" cy="9" r="1.6"/><circle cx="15.5" cy="9" r="1.6"/><circle cx="6" cy="13.5" r="1.5"/><circle cx="18" cy="13.5" r="1.5"/><path d="M12 13c-2.2 0-4 1.8-4 3.6C8 18 9.3 19 12 19s4-1 4-2.4C16 14.8 14.2 13 12 13z"/></svg> Veterinaria</button>
-          <button class="ptab" data-proto="inventory" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8l9-5 9 5v8l-9 5-9-5z" stroke-linejoin="round"/><path d="M3 8l9 5 9-5M12 13v8" stroke-linejoin="round"/></svg> Inventario</button>
-          <button class="ptab" data-proto="services" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round"/></svg> Servicios pro</button>
+            <div class="dd-group">Paneles de administración</div>
+            <button class="ptab on" data-proto="gym" role="option" aria-selected="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3v10H4zM17 7h3v10h-3zM7 12h10" stroke-linecap="round"/></svg> Gimnasio</button>
+            <button class="ptab" data-proto="clinic" role="option" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg> Clínica / Consultorio</button>
+            <button class="ptab" data-proto="crm" role="option" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18v-5M10 18V8M16 18v-3M22 18V6" stroke-linecap="round"/></svg> CRM / Ventas</button>
+            <button class="ptab" data-proto="barber" role="option" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8 8l12 10M8 16L20 6" stroke-linecap="round"/></svg> Barbería / Spa</button>
+            <button class="ptab" data-proto="vet" role="option" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8.5" cy="9" r="1.6"/><circle cx="15.5" cy="9" r="1.6"/><circle cx="6" cy="13.5" r="1.5"/><circle cx="18" cy="13.5" r="1.5"/><path d="M12 13c-2.2 0-4 1.8-4 3.6C8 18 9.3 19 12 19s4-1 4-2.4C16 14.8 14.2 13 12 13z"/></svg> Veterinaria</button>
+            <button class="ptab" data-proto="inventory" role="option" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8l9-5 9 5v8l-9 5-9-5z" stroke-linejoin="round"/><path d="M3 8l9 5 9-5M12 13v8" stroke-linejoin="round"/></svg> Inventario</button>
+            <div class="dd-group">Sitios web</div>
+            <button class="ptab" data-proto="resto" role="option" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3v8M6 11a2 2 0 002-2V3M6 11v10M18 3c-2 0-3 3-3 6s1 3 3 3v9" stroke-linecap="round" stroke-linejoin="round"/></svg> Restaurante</button>
+            <button class="ptab" data-proto="shop" role="option" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12l-1 12H7zM9 7a3 3 0 016 0" stroke-linecap="round" stroke-linejoin="round"/></svg> Tienda online</button>
+            <button class="ptab" data-proto="services" role="option" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round"/></svg> Servicios pro</button>
           </div>
         </div>
 
