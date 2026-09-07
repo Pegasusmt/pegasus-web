@@ -338,6 +338,46 @@
   .cta-band .hero-cta { justify-content: center; margin-top: 40px; }
   .cta-star { position: absolute; color: var(--gold); opacity: 0.45; }
 
+  /* ---------- LEAD FORM ---------- */
+  .form-card { margin: 38px auto 0; text-align: left; display: grid; gap: 15px; max-width: 560px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  .form-card label { display: block; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 500; }
+  .form-card input, .form-card select, .form-card textarea { width: 100%; background: rgba(5,6,15,0.55); border: 1px solid var(--line); color: var(--text); font-family: var(--body); font-size: 15px; padding: 13px 15px; border-radius: 12px; }
+  .form-card input::placeholder, .form-card textarea::placeholder { color: var(--muted-2); }
+  .form-card input:focus, .form-card select:focus, .form-card textarea:focus { outline: none; border-color: var(--gold-deep); box-shadow: 0 0 0 3px var(--gold-glow); }
+  .form-card select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%239AA1C6' stroke-width='2'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 15px center; padding-right: 40px; }
+  .form-card textarea { resize: vertical; min-height: 88px; }
+  .form-card .btn { width: 100%; justify-content: center; margin-top: 6px; }
+  .form-card .btn svg { width: 18px; height: 18px; fill: currentColor; }
+  .form-alt { text-align: center; font-size: 13.5px; color: var(--muted); }
+  .form-alt a { color: var(--gold); }
+
+  /* trust chips */
+  .trust-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 26px; margin-top: 30px; }
+  .trust-row span { font-size: 13.5px; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; }
+  .trust-row svg { width: 16px; height: 16px; color: var(--good); flex: none; }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { max-width: 800px; margin: 0 auto; display: grid; gap: 13px; }
+  .faq { border: 1px solid var(--line-soft); border-radius: 14px; background: linear-gradient(180deg, var(--panel), var(--ink-2)); overflow: hidden; transition: border-color .2s ease; }
+  .faq[open] { border-color: var(--line); }
+  .faq summary { list-style: none; cursor: pointer; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 18px; font-family: var(--display); font-weight: 700; font-size: 18.5px; color: var(--text); letter-spacing: -0.01em; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+  .faq .q-ic { width: 22px; height: 22px; flex: none; color: var(--gold); transition: transform .25s ease; }
+  .faq[open] .q-ic { transform: rotate(45deg); }
+  .faq .faq-a { padding: 0 24px 22px; color: var(--muted); font-size: 15.5px; font-weight: 300; line-height: 1.7; max-width: 68ch; }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .wa-float { position: fixed; right: 24px; bottom: 24px; z-index: 100; width: 60px; height: 60px; border-radius: 50%; background: #25D366; display: grid; place-items: center; box-shadow: 0 12px 30px rgba(37,211,102,0.42); transition: transform .2s ease; }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  .wa-float svg { width: 33px; height: 33px; fill: #fff; position: relative; z-index: 2; }
+  .wa-float::after { content: ""; position: absolute; inset: 0; border-radius: 50%; box-shadow: 0 0 0 0 rgba(37,211,102,0.5); animation: waPulse 2.6s infinite; }
+  @keyframes waPulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); } 70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+  @media (max-width: 600px) { .wa-float { width: 54px; height: 54px; right: 16px; bottom: 16px; } .wa-float svg { width: 29px; height: 29px; } .form-row { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .wa-float::after { animation: none; } }
+
   /* ---------- FOOTER ---------- */
   footer { border-top: 1px solid var(--line-soft); padding: 60px 0 44px; margin-top: 30px; }
   .foot { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; align-items: flex-start; }
@@ -444,6 +484,7 @@
       <a href="#estudio">Prototipos</a>
       <a href="#caso">Caso de éxito</a>
       <a href="#inversion">Inversión</a>
+      <a href="#faq">FAQ</a>
     </nav>
     <a class="btn btn-gold" href="#contacto">Iniciar proyecto</a>
   </div>
@@ -976,6 +1017,42 @@
   </div>
 </section>
 
+<!-- ================= FAQ ================= -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Todo lo que necesitas saber.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq">
+        <summary>¿Cuánto tarda un proyecto?<svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></summary>
+        <div class="faq-a">Una web de presentación toma de 1 a 2 semanas. Un sistema con panel de administración, entre 3 y 6 semanas según el alcance. Desde el inicio te entregamos un cronograma claro con fechas.</div>
+      </details>
+      <details class="faq">
+        <summary>¿Los sistemas son realmente a medida?<svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></summary>
+        <div class="faq-a">Sí. No usamos plantillas genéricas: diseñamos la interfaz y la base de datos según cómo trabaja tu negocio, para que la herramienta se adapte a ti y no al revés.</div>
+      </details>
+      <details class="faq">
+        <summary>¿Cómo son los pagos?<svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></summary>
+        <div class="faq-a">Trabajamos con un anticipo para arrancar y el resto contra entregas. Acordamos juntos el esquema que más te acomode, siempre con total transparencia.</div>
+      </details>
+      <details class="faq">
+        <summary>¿Ofrecen soporte después de entregar?<svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></summary>
+        <div class="faq-a">Claro. Incluimos soporte tras el lanzamiento y ofrecemos planes de mantenimiento para mantener tu sistema actualizado, seguro y funcionando siempre.</div>
+      </details>
+      <details class="faq">
+        <summary>¿Puedo administrar el contenido yo mismo?<svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></summary>
+        <div class="faq-a">Sí. Entregamos un panel fácil de usar y te capacitamos para que administres citas, productos, clientes o contenido sin depender de nadie.</div>
+      </details>
+      <details class="faq">
+        <summary>¿Qué necesitan de mí para empezar?<svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></summary>
+        <div class="faq-a">Solo una charla inicial para entender tu negocio y tus objetivos. Nosotros nos encargamos del resto: diseño, desarrollo, pruebas y lanzamiento.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- ================= CTA ================= -->
 <section class="sec" id="contacto">
   <div class="wrap">
@@ -985,9 +1062,47 @@
       <span class="eyebrow" style="justify-content:center">Pegasus está listo</span>
       <h2>Hagamos tu proyecto realidad.</h2>
       <p>Cuéntanos qué necesitas —una web premium, un CRM, un sistema completo— y lo llevamos a lo más alto. La primera consulta es sin compromiso.</p>
-      <div class="hero-cta">
-        <a class="btn btn-gold" href="mailto:hola@pegasus.studio">Escríbenos →</a>
-        <a class="btn btn-ghost" href="#" onclick="return false">Agendar una llamada</a>
+
+      <form class="form-card" id="leadForm">
+        <div class="form-row">
+          <div>
+            <label for="fName">Tu nombre</label>
+            <input id="fName" type="text" required autocomplete="name" placeholder="Ej. Juan Pérez" />
+          </div>
+          <div>
+            <label for="fBiz">Tu negocio</label>
+            <input id="fBiz" type="text" autocomplete="organization" placeholder="Ej. Gimnasio Titán" />
+          </div>
+        </div>
+        <div>
+          <label for="fType">¿Qué necesitas?</label>
+          <select id="fType">
+            <option>Administración de gimnasio</option>
+            <option>Web + panel de administración</option>
+            <option>CRM a medida</option>
+            <option>Base de datos</option>
+            <option>Diseño / web premium</option>
+            <option>Tienda online</option>
+            <option>Restaurante / menú digital</option>
+            <option>Web de servicios profesionales</option>
+            <option>Otro proyecto</option>
+          </select>
+        </div>
+        <div>
+          <label for="fMsg">Mensaje (opcional)</label>
+          <textarea id="fMsg" placeholder="Cuéntanos brevemente tu idea..."></textarea>
+        </div>
+        <button class="btn btn-gold" type="submit">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm5.9 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.2.2-.3.4-.2.6.2.4.8 1.3 1.6 2 .9.8 1.7 1.1 2.1 1.3.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.2.1.4.2.5.3.1.2.1.7-.1 1.4z"/></svg>
+          Enviar por WhatsApp
+        </button>
+        <p class="form-alt">o escríbenos a <a href="mailto:hola@pegasus.studio">hola@pegasus.studio</a></p>
+      </form>
+
+      <div class="trust-row">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Primera propuesta sin costo</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Código 100% a medida</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Soporte incluido</span>
       </div>
     </div>
   </div>
@@ -1019,6 +1134,11 @@
     </div>
   </div>
 </footer>
+
+<!-- Floating WhatsApp -->
+<a class="wa-float" id="waFloat" href="https://wa.me/5215555555555" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-3-.2-.3A8 8 0 1112 20zm4.5-6c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.6.1-1.4-.7-2.3-1.3-3.2-2.9-.2-.4.2-.4.6-1.2.1-.2 0-.4 0-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2-1 2.3.4 2.4 1.9 4 4 5.2 1.6.9 2.5 1 3.3.8.6-.1 1.5-.6 1.7-1.3.2-.6.2-1.1.1-1.2-.1-.1-.2-.1-.4-.2z"/></svg>
+</a>
 
 <script>
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1144,6 +1264,35 @@
       var io = new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting && !seen){ seen = true; play(activePanel()); } }); }, { threshold: 0.3 });
       io.observe(stage);
     } else { play(activePanel()); }
+  })();
+
+  /* ---- Contacto: WhatsApp float + formulario ---- */
+  (function () {
+    // ▼▼▼ REEMPLAZA con tu número real (código de país + número, sin + ni espacios) ▼▼▼
+    var WA = '5215555555555';
+    // ▲▲▲ Ej. México: 52 + 10 dígitos → '521XXXXXXXXXX' | Otros países: código + número ▲▲▲
+
+    var waFloat = document.getElementById('waFloat');
+    if (waFloat) {
+      waFloat.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hola Pegasus 👋 Me interesa hacer un proyecto con ustedes.');
+    }
+
+    var form = document.getElementById('leadForm');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var n = (document.getElementById('fName').value || '').trim();
+        var b = (document.getElementById('fBiz').value || '').trim();
+        var t = document.getElementById('fType').value;
+        var m = (document.getElementById('fMsg').value || '').trim();
+        var msg = 'Hola Pegasus 👋';
+        if (n) msg += ' Soy ' + n + '.';
+        if (b) msg += ' Mi negocio es ' + b + '.';
+        msg += ' Me interesa: ' + t + '.';
+        if (m) msg += ' ' + m;
+        window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank');
+      });
+    }
   })();
 </script>
 </body>
