@@ -162,7 +162,18 @@
 
   .controls { border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(180deg, var(--panel), var(--ink-2)); padding: 26px; position: sticky; top: 96px; }
   .controls .ctitle { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted-2); font-weight: 500; margin-bottom: 14px; }
-  .proto-tabs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 26px; }
+  .proto-tabs { display: flex; flex-direction: column; gap: 6px; }
+  .dropdown { position: relative; margin-bottom: 26px; }
+  .dd-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--ink); border: 1px solid var(--line); color: var(--text); font-family: var(--body); font-size: 15px; padding: 13px 15px; border-radius: 12px; cursor: pointer; transition: border-color .2s ease; }
+  .dd-trigger:hover, .dd-trigger[aria-expanded="true"] { border-color: var(--gold-deep); }
+  .dd-trigger:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .dd-current { display: flex; align-items: center; gap: 11px; min-width: 0; }
+  .dd-current #ddIcon svg { width: 18px; height: 18px; color: var(--gold); display: block; }
+  #ddLabel { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dd-chev { width: 16px; height: 16px; color: var(--muted); flex: none; transition: transform .2s ease; }
+  .dd-trigger[aria-expanded="true"] .dd-chev { transform: rotate(180deg); }
+  .dd-panel { position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 45; background: var(--panel-2); border: 1px solid var(--line); border-radius: 14px; padding: 8px; box-shadow: 0 26px 54px rgba(0,0,0,0.55); max-height: 340px; overflow-y: auto; }
+  .dd-panel[hidden] { display: none; }
   .ptab { display: flex; align-items: center; gap: 12px; text-align: left; width: 100%; cursor: pointer;
     background: transparent; border: 1px solid var(--line-soft); color: var(--muted); padding: 12px 15px; border-radius: 12px;
     font-family: var(--body); font-size: 15px; transition: all .2s ease; }
@@ -349,8 +360,6 @@
     .hero { padding: 84px 0 64px; }
     .studio-wrap { grid-template-columns: minmax(0, 1fr); }
     .controls { position: static; }
-    .proto-tabs { flex-direction: row; overflow-x: auto; padding-bottom: 6px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-    .ptab { flex: 0 0 auto; white-space: nowrap; }
     .svc { grid-column: span 6; }
     .svc.wide { grid-column: span 12; }
     .steps { grid-template-columns: 1fr 1fr; }
@@ -543,7 +552,12 @@
       <!-- CONTROLS -->
       <aside class="controls">
         <div class="ctitle">Tipo de proyecto</div>
-        <div class="proto-tabs" role="tablist">
+        <div class="dropdown" id="protoDropdown">
+          <button class="dd-trigger" id="ddTrigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="dd-current"><span id="ddIcon"></span><span id="ddLabel">Gimnasio</span></span>
+            <svg class="dd-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="proto-tabs dd-panel" id="ddPanel" role="listbox" hidden>
           <button class="ptab on" data-proto="gym" role="tab" aria-selected="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3v10H4zM17 7h3v10h-3zM7 12h10" stroke-linecap="round"/></svg> Gimnasio</button>
           <button class="ptab" data-proto="clinic" role="tab" aria-selected="false">
@@ -562,6 +576,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8l9-5 9 5v8l-9 5-9-5z" stroke-linejoin="round"/><path d="M3 8l9 5 9-5M12 13v8" stroke-linejoin="round"/></svg> Inventario</button>
           <button class="ptab" data-proto="services" role="tab" aria-selected="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round"/></svg> Servicios pro</button>
+          </div>
         </div>
 
         <div class="ctl-field">
@@ -1042,6 +1057,24 @@
     var urlHost = document.getElementById('urlHost');
     var current = 'gym';
 
+    var ddTrigger = document.getElementById('ddTrigger');
+    var ddPanel = document.getElementById('ddPanel');
+    var ddLabel = document.getElementById('ddLabel');
+    var ddIcon = document.getElementById('ddIcon');
+    var ddBox = document.getElementById('protoDropdown');
+    function closeDD(){ ddPanel.hidden = true; ddTrigger.setAttribute('aria-expanded', 'false'); }
+    function openDD(){ ddPanel.hidden = false; ddTrigger.setAttribute('aria-expanded', 'true'); }
+    function syncTrigger(name){
+      var act = document.querySelector('.ptab[data-proto="' + name + '"]');
+      if (!act) return;
+      ddLabel.textContent = act.textContent.trim();
+      var svg = act.querySelector('svg');
+      if (svg) { ddIcon.innerHTML = ''; ddIcon.appendChild(svg.cloneNode(true)); }
+    }
+    ddTrigger.addEventListener('click', function(e){ e.stopPropagation(); if (ddPanel.hidden) openDD(); else closeDD(); });
+    document.addEventListener('click', function(e){ if (!ddPanel.hidden && !ddBox.contains(e.target)) closeDD(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeDD(); });
+
     function activePanel(){ return stage.querySelector('.proto[data-proto="'+current+'"]'); }
 
     function fmt(n, prefix, suffix, comma){
@@ -1076,10 +1109,12 @@
       current = name;
       panels.forEach(function(p){ p.hidden = (p.getAttribute('data-proto') !== name); });
       tabs.forEach(function(t){ var on = t.getAttribute('data-proto')===name; t.classList.toggle('on', on); t.setAttribute('aria-selected', on?'true':'false'); });
+      syncTrigger(name);
       play(activePanel());
     }
 
-    tabs.forEach(function(t){ t.addEventListener('click', function(){ setProto(t.getAttribute('data-proto')); }); });
+    tabs.forEach(function(t){ t.addEventListener('click', function(){ setProto(t.getAttribute('data-proto')); closeDD(); }); });
+    syncTrigger('gym');
 
     function slug(s){ return (s||'tu-marca').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'tu-marca'; }
     input.addEventListener('input', function(){
