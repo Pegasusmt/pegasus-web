@@ -221,6 +221,7 @@
   .pill { font-size: 10px; padding: 3px 9px; border-radius: 999px; display: inline-block; font-weight: 500; }
   .pill.ok { background: rgba(88,199,155,0.15); color: var(--good); }
   .pill.wait { background: var(--pa-weak); color: var(--pa); }
+  .pill.low { background: rgba(232,104,107,0.16); color: #E8686B; }
   .mk-btn { background: var(--pa); color: #14140a; border: none; font-family: var(--body); font-weight: 600; font-size: 13px; padding: 9px 16px; border-radius: 9px; cursor: pointer; }
   .mk-btn.ghost { background: transparent; border: 1px solid var(--mk-line); color: var(--mk-text); }
 
@@ -487,6 +488,14 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3v8M6 11a2 2 0 002-2V3M6 11v10M18 3c-2 0-3 3-3 6s1 3 3 3v9" stroke-linecap="round" stroke-linejoin="round"/></svg> Restaurante</button>
           <button class="ptab" data-proto="shop" role="tab" aria-selected="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12l-1 12H7zM9 7a3 3 0 016 0" stroke-linecap="round" stroke-linejoin="round"/></svg> Tienda online</button>
+          <button class="ptab" data-proto="barber" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8 8l12 10M8 16L20 6" stroke-linecap="round"/></svg> Barbería / Spa</button>
+          <button class="ptab" data-proto="vet" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8.5" cy="9" r="1.6"/><circle cx="15.5" cy="9" r="1.6"/><circle cx="6" cy="13.5" r="1.5"/><circle cx="18" cy="13.5" r="1.5"/><path d="M12 13c-2.2 0-4 1.8-4 3.6C8 18 9.3 19 12 19s4-1 4-2.4C16 14.8 14.2 13 12 13z"/></svg> Veterinaria</button>
+          <button class="ptab" data-proto="inventory" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8l9-5 9 5v8l-9 5-9-5z" stroke-linejoin="round"/><path d="M3 8l9 5 9-5M12 13v8" stroke-linejoin="round"/></svg> Inventario</button>
+          <button class="ptab" data-proto="services" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round"/></svg> Servicios pro</button>
         </div>
 
         <div class="ctl-field">
@@ -636,6 +645,105 @@
                     <div class="prod"><div class="ph"></div><div class="pb"><div class="pn">Producto Premium</div><div class="pp">$49</div><button class="mk-btn">Agregar</button></div></div>
                     <div class="prod"><div class="ph"></div><div class="pb"><div class="pn">Edición Especial</div><div class="pp">$79</div><button class="mk-btn">Agregar</button></div></div>
                     <div class="prod"><div class="ph"></div><div class="pb"><div class="pn">Clásico</div><div class="pp">$35</div><button class="mk-btn">Agregar</button></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BARBER / SPA -->
+              <div class="proto mk" data-proto="barber" hidden>
+                <div class="mk-app">
+                  <div class="mk-side"><div class="lg pv-initial">T</div><i class="on"></i><i></i><i></i><i></i></div>
+                  <div class="mk-main">
+                    <div class="mk-top"><h4 class="pv-brand">Tu Marca</h4><span class="who"><b></b> Recepción</span></div>
+                    <div class="kpis">
+                      <div class="kpi"><div class="k">Citas hoy</div><div class="v acc" data-count="27">27</div></div>
+                      <div class="kpi"><div class="k">Ingresos día</div><div class="v" data-count="640" data-prefix="$" data-comma="1">$640</div></div>
+                      <div class="kpi"><div class="k">Ocupación</div><div class="v" data-count="82" data-suffix="%">82%</div></div>
+                    </div>
+                    <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mk-muted);margin:2px 0 10px">Agenda por profesional</div>
+                    <div class="kanban">
+                      <div class="kcol"><h5>Andrés <span>3</span></h5>
+                        <div class="deal"><div class="dn">09:00 · Corte + barba</div><div class="dv" data-count="18" data-prefix="$">$18</div></div>
+                        <div class="deal"><div class="dn">10:30 · Fade</div><div class="dv" data-count="14" data-prefix="$">$14</div></div>
+                      </div>
+                      <div class="kcol"><h5>Sofía <span>2</span></h5>
+                        <div class="deal"><div class="dn">11:00 · Color + corte</div><div class="dv" data-count="45" data-prefix="$">$45</div></div>
+                        <div class="deal"><div class="dn">13:00 · Peinado</div><div class="dv" data-count="25" data-prefix="$">$25</div></div>
+                      </div>
+                      <div class="kcol"><h5>Marco <span>2</span></h5>
+                        <div class="deal"><div class="dn">12:00 · Afeitado clásico</div><div class="dv" data-count="16" data-prefix="$">$16</div></div>
+                        <div class="deal"><div class="dn">15:30 · Corte niño</div><div class="dv" data-count="12" data-prefix="$">$12</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VETERINARY -->
+              <div class="proto mk" data-proto="vet" hidden>
+                <div class="mk-app">
+                  <div class="mk-side"><div class="lg pv-initial">T</div><i class="on"></i><i></i><i></i><i></i></div>
+                  <div class="mk-main">
+                    <div class="mk-top"><h4 class="pv-brand">Tu Marca</h4><span class="who"><b></b> Dr. Peña</span></div>
+                    <div class="kpis">
+                      <div class="kpi"><div class="k">Citas hoy</div><div class="v acc" data-count="12">12</div></div>
+                      <div class="kpi"><div class="k">Pacientes</div><div class="v" data-count="340" data-comma="1">340</div></div>
+                      <div class="kpi"><div class="k">Ingresos día</div><div class="v" data-count="980" data-prefix="$" data-comma="1">$980</div></div>
+                    </div>
+                    <div class="panel-card">
+                      <div class="pc-h"><b>Fichas de hoy</b><button class="mk-btn">+ Nueva ficha</button></div>
+                      <div class="row" style="grid-template-columns:1.3fr 1fr 1fr .8fr"><span class="nm"><span class="av"></span>Rocky</span><span>Labrador</span><span>Vacunación</span><span class="pill ok">En consulta</span></div>
+                      <div class="row" style="grid-template-columns:1.3fr 1fr 1fr .8fr"><span class="nm"><span class="av"></span>Michi</span><span>Gato · Siamés</span><span>Control</span><span class="pill wait">Por llegar</span></div>
+                      <div class="row" style="grid-template-columns:1.3fr 1fr 1fr .8fr"><span class="nm"><span class="av"></span>Luna</span><span>Poodle</span><span>Cirugía</span><span class="pill wait">Programada</span></div>
+                      <div class="row" style="grid-template-columns:1.3fr 1fr 1fr .8fr"><span class="nm"><span class="av"></span>Max</span><span>Bulldog</span><span>Desparasitar</span><span class="pill ok">Atendido</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- INVENTORY / WAREHOUSE -->
+              <div class="proto mk" data-proto="inventory" hidden>
+                <div class="mk-app">
+                  <div class="mk-side"><div class="lg pv-initial">T</div><i class="on"></i><i></i><i></i><i></i></div>
+                  <div class="mk-main">
+                    <div class="mk-top"><h4 class="pv-brand">Tu Marca</h4><span class="who"><b></b> Almacén</span></div>
+                    <div class="kpis">
+                      <div class="kpi"><div class="k">Productos (SKU)</div><div class="v acc" data-count="1240" data-comma="1">1,240</div></div>
+                      <div class="kpi"><div class="k">Valor de stock</div><div class="v" data-count="84300" data-prefix="$" data-comma="1">$84,300</div></div>
+                      <div class="kpi"><div class="k">Alertas</div><div class="v" data-count="5">5</div></div>
+                    </div>
+                    <div class="panel-card" style="margin-bottom:14px">
+                      <div class="pc-h"><b>Movimiento semanal</b><span>Entradas / salidas</span></div>
+                      <div class="chart">
+                        <div class="bar" data-h="55%"></div><div class="bar" data-h="70%"></div><div class="bar" data-h="48%"></div><div class="bar hi" data-h="88%"></div><div class="bar" data-h="62%"></div><div class="bar" data-h="75%"></div><div class="bar" data-h="40%"></div>
+                      </div>
+                      <div class="chart-x"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+                    </div>
+                    <div class="panel-card">
+                      <div class="pc-h"><b>Inventario</b><button class="mk-btn">+ Entrada</button></div>
+                      <div class="row" style="grid-template-columns:1.4fr 1fr .7fr .9fr"><span class="nm">Producto Alfa</span><span style="color:var(--mk-muted)">SKU-001</span><span style="font-variant-numeric:tabular-nums">128</span><span class="pill ok">En stock</span></div>
+                      <div class="row" style="grid-template-columns:1.4fr 1fr .7fr .9fr"><span class="nm">Producto Beta</span><span style="color:var(--mk-muted)">SKU-014</span><span style="font-variant-numeric:tabular-nums">12</span><span class="pill wait">Bajo</span></div>
+                      <div class="row" style="grid-template-columns:1.4fr 1fr .7fr .9fr"><span class="nm">Producto Gamma</span><span style="color:var(--mk-muted)">SKU-027</span><span style="font-variant-numeric:tabular-nums">0</span><span class="pill low">Agotado</span></div>
+                      <div class="row" style="grid-template-columns:1.4fr 1fr .7fr .9fr"><span class="nm">Producto Delta</span><span style="color:var(--mk-muted)">SKU-039</span><span style="font-variant-numeric:tabular-nums">76</span><span class="pill ok">En stock</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PROFESSIONAL SERVICES (public site) -->
+              <div class="proto mk" data-proto="services" hidden>
+                <div class="site">
+                  <div class="site-nav"><span class="sb pv-brand">Tu Marca</span><span class="sl"><span>Servicios</span><span>Nosotros</span><span>Contacto</span></span></div>
+                  <div class="site-hero">
+                    <div class="eb">Consultoría &amp; Asesoría</div>
+                    <h2 class="pv-brand">Tu Marca</h2>
+                    <p>Soluciones profesionales a la medida de tu empresa. Resultados que se notan desde el primer mes.</p>
+                    <button class="mk-btn">Agenda una consulta</button>
+                  </div>
+                  <div class="products">
+                    <div class="prod"><div class="pb"><div class="pn" style="font-family:var(--display);font-size:15px;font-weight:600">Asesoría legal</div><div style="font-size:11px;color:var(--mk-muted);margin:5px 0 10px">Contratos, cumplimiento y protección.</div><button class="mk-btn ghost">Ver más</button></div></div>
+                    <div class="prod"><div class="pb"><div class="pn" style="font-family:var(--display);font-size:15px;font-weight:600">Consultoría fiscal</div><div style="font-size:11px;color:var(--mk-muted);margin:5px 0 10px">Impuestos, contabilidad y reportes.</div><button class="mk-btn ghost">Ver más</button></div></div>
+                    <div class="prod"><div class="pb"><div class="pn" style="font-family:var(--display);font-size:15px;font-weight:600">Estrategia digital</div><div style="font-size:11px;color:var(--mk-muted);margin:5px 0 10px">Marca, web y captación de clientes.</div><button class="mk-btn ghost">Ver más</button></div></div>
                   </div>
                 </div>
               </div>
