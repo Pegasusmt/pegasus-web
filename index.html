@@ -125,8 +125,8 @@
   #sky { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
   .hero .wrap { position: relative; z-index: 2; }
   .hero-grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 48px; align-items: center; }
-  .hero h1 { font-size: clamp(46px, 7vw, 92px); line-height: 1.0; margin: 26px 0 0; font-weight: 800; letter-spacing: -0.03em; }
-  .hero h1 em { font-style: italic; font-weight: 700; }
+  .hero h1 { font-size: clamp(44px, 6.4vw, 84px); line-height: 1.08; margin: 26px 0 0; font-weight: 700; letter-spacing: -0.01em; }
+  .hero h1 em { font-style: italic; font-weight: 600; }
   .hero-lede { color: var(--muted); font-size: 19.5px; max-width: 44ch; margin-top: 26px; font-weight: 300; line-height: 1.7; }
   .hero-cta { display: flex; gap: 15px; margin-top: 36px; flex-wrap: wrap; }
   .hero-meta { display: flex; gap: 0; margin-top: 50px; flex-wrap: wrap; border-top: 1px solid var(--line-soft); padding-top: 26px; }
@@ -178,6 +178,7 @@
   .studio-wrap { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 34px; align-items: start; }
   .studio-wrap > * { min-width: 0; }
   #protoStage, #protoStage2 { min-width: 0; max-width: 100%; }
+  #protoStage2 { --pa: #E6C27A; --pa-weak: rgba(230,194,122,0.14); --mk-bg: #0C0F26; --mk-panel: #12162F; --mk-panel2: #161B39; --mk-text: #EEF0FA; --mk-muted: #8B92BC; --mk-line: #232a52; --mk-soft: rgba(255,255,255,0.03); }
 
   .controls { border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(180deg, var(--panel), var(--ink-2)); padding: 26px; position: sticky; top: 96px; }
   .controls .ctitle { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted-2); font-weight: 500; margin-bottom: 14px; }
@@ -316,6 +317,18 @@
   .case-metrics .cm .l { font-size: 12px; color: var(--muted-2); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 8px; }
   .case-tags { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 30px; }
   .chip { font-size: 12px; letter-spacing: 0.04em; color: var(--violet); border: 1px solid var(--line); padding: 7px 14px; border-radius: 999px; }
+  .mod-head { margin: 64px 0 30px; text-align: center; }
+  .mod-head .eyebrow { justify-content: center; }
+  .mod-head h3 { font-size: clamp(26px, 3.4vw, 38px); margin-top: 14px; font-weight: 700; }
+  .mod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .mod { border: 1px solid var(--line-soft); border-radius: 14px; background: linear-gradient(180deg, var(--panel), var(--ink-2)); padding: 22px; transition: border-color .2s ease, transform .2s ease; }
+  .mod:hover { border-color: var(--gold-deep); transform: translateY(-3px); }
+  .mod .ico { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; background: radial-gradient(circle at 30% 30%, var(--panel-2), var(--ink)); border: 1px solid var(--line); color: var(--gold); margin-bottom: 15px; }
+  .mod .ico svg { width: 20px; height: 20px; }
+  .mod h4 { font-size: 16.5px; font-weight: 700; margin-bottom: 8px; }
+  .mod p { color: var(--muted); font-size: 13.5px; font-weight: 300; line-height: 1.55; }
+  @media (max-width: 900px) { .mod-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .mod-grid { grid-template-columns: 1fr; } }
 
   /* ---------- PROCESS ---------- */
   .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
@@ -942,47 +955,94 @@
   <div class="wrap">
     <div class="case-grid">
       <div class="case-copy">
-        <span class="eyebrow">Caso de éxito</span>
-        <h2>Clínica Dental: de la agenda de papel al panel inteligente.</h2>
-        <p>Llevamos a una clínica del cuaderno de citas a un sistema que trabaja por ella: una web donde los pacientes reservan solos, conectada a un panel que ordena citas, historiales y pagos. ¿El resultado? Menos ausencias, más reservas y un equipo que por fin respira. Esto es lo que también podemos hacer por ti.</p>
+        <span class="eyebrow">Proyecto en producción</span>
+        <h2>JavoFit: el sistema que jubiló el Excel del gimnasio.</h2>
+        <p>Un dashboard de administración en la nube, funcionando 24/7, que hoy gestiona <b>326 clientes reales</b>. Reemplazamos las planillas por un sistema completo: clientes, pagos, fichas de salud, contratos con firma digital y hasta un leaderboard en pantalla para la sala. Esto es exactamente el nivel de trabajo que podemos construir para tu negocio.</p>
         <div class="case-metrics">
-          <div class="cm"><div class="n">+38%</div><div class="l">Reservas online</div></div>
-          <div class="cm"><div class="n">−9h</div><div class="l">Papeleo / semana</div></div>
-          <div class="cm"><div class="n">24/7</div><div class="l">Agenda abierta</div></div>
+          <div class="cm"><div class="n">326</div><div class="l">Clientes reales</div></div>
+          <div class="cm"><div class="n">24/7</div><div class="l">En producción</div></div>
+          <div class="cm"><div class="n">100%</div><div class="l">En la nube</div></div>
         </div>
         <div class="case-tags">
-          <span class="chip">UX / UI</span><span class="chip">Base de datos</span><span class="chip">Panel admin</span><span class="chip">Reservas online</span>
+          <span class="chip">Sistema a medida</span><span class="chip">PostgreSQL</span><span class="chip">Firma digital</span><span class="chip">WhatsApp</span><span class="chip">Modo TV</span>
         </div>
       </div>
 
       <div id="protoStage2">
-        <div class="browser" style="--pa:#58C79B;--pa-weak:rgba(88,199,155,0.14)">
+        <div class="browser">
           <div class="bar">
             <span class="dot" style="background:#E8686B"></span><span class="dot" style="background:#E6C27A"></span><span class="dot" style="background:#58C79B"></span>
-            <span class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>panel.clinicasonrisa.com</span>
+            <span class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>app.javofit.com</span>
           </div>
           <div class="stage-body" style="height:380px">
             <div class="proto mk">
               <div class="mk-app">
-                <div class="mk-side"><div class="lg">S</div><i class="on"></i><i></i><i></i><i></i></div>
+                <div class="mk-side"><div class="lg">J</div><i class="on"></i><i></i><i></i><i></i><i></i></div>
                 <div class="mk-main">
-                  <div class="mk-top"><h4>Clínica Sonrisa</h4><span class="who"><b></b> Dra. Rivas</span></div>
+                  <div class="mk-top"><h4>JavoFit</h4><span class="who"><b></b> Recepción</span></div>
                   <div class="kpis">
-                    <div class="kpi"><div class="k">Citas hoy</div><div class="v acc">14</div></div>
-                    <div class="kpi"><div class="k">Confirmadas</div><div class="v">11</div></div>
-                    <div class="kpi"><div class="k">Ingresos</div><div class="v">$2,400</div></div>
+                    <div class="kpi"><div class="k">Socios activos</div><div class="v acc">326</div></div>
+                    <div class="kpi"><div class="k">Al día</div><div class="v" style="color:var(--good)">291</div></div>
+                    <div class="kpi"><div class="k">En riesgo</div><div class="v">12</div></div>
                   </div>
                   <div class="panel-card">
-                    <div class="pc-h"><b>Agenda del día</b><span>6 sep</span></div>
-                    <div class="row" style="grid-template-columns:.5fr 1.3fr 1fr .8fr"><span>09:00</span><span class="nm"><span class="av"></span>Laura Méndez</span><span>Limpieza</span><span class="pill ok">Confirmada</span></div>
-                    <div class="row" style="grid-template-columns:.5fr 1.3fr 1fr .8fr"><span>10:30</span><span class="nm"><span class="av"></span>Carlos Ruiz</span><span>Ortodoncia</span><span class="pill ok">Confirmada</span></div>
-                    <div class="row" style="grid-template-columns:.5fr 1.3fr 1fr .8fr"><span>12:00</span><span class="nm"><span class="av"></span>Ana Torres</span><span>Blanqueam.</span><span class="pill wait">Por llegar</span></div>
+                    <div class="pc-h"><b>Modo TV · Ranking Press Banca</b><span>Sala</span></div>
+                    <div class="row" style="grid-template-columns:.4fr 1.4fr .7fr"><span style="color:var(--pa);font-weight:700">1</span><span class="nm"><span class="av"></span>Javier R.</span><span style="text-align:right;font-weight:700">140 kg</span></div>
+                    <div class="row" style="grid-template-columns:.4fr 1.4fr .7fr"><span style="color:var(--mk-muted);font-weight:700">2</span><span class="nm"><span class="av"></span>Marco S.</span><span style="text-align:right;font-weight:700">132 kg</span></div>
+                    <div class="row" style="grid-template-columns:.4fr 1.4fr .7fr"><span style="color:var(--mk-muted);font-weight:700">3</span><span class="nm"><span class="av"></span>Diego P.</span><span style="text-align:right;font-weight:700">125 kg</span></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="mod-head">
+      <span class="eyebrow">Todo lo que incluye</span>
+      <h3>Ocho módulos, un solo sistema.</h3>
+    </div>
+    <div class="mod-grid">
+      <div class="mod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5M16 6a3 3 0 010 6M18 20c0-2-1-3.5-2.5-4.3" stroke-linecap="round"/></svg></div>
+        <h4>Gestión de clientes</h4>
+        <p>Ficha completa por persona (datos, salud, medidas, récords, contrato), estados de membresía y filtros avanzados.</p>
+      </div>
+      <div class="mod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18" stroke-linecap="round"/></svg></div>
+        <h4>Pagos y finanzas</h4>
+        <p>Registro por plan y método, renovaciones en un clic, descuentos y panel de métricas: ingresos, ticket y riesgo.</p>
+      </div>
+      <div class="mod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div>
+        <h4>Base de datos en la nube</h4>
+        <p>PostgreSQL seguro con login por usuario, respaldo automático y migración limpia de 326 clientes desde Excel.</p>
+      </div>
+      <div class="mod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.3-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.7-7 9-7 9z"/></svg></div>
+        <h4>Salud y seguimiento</h4>
+        <p>Ficha médica, nutrición y kinesiología con estado apto/precaución, más historial de medidas y récords (PR).</p>
+      </div>
+      <div class="mod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4zM14 6l3 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Contrato con firma digital</h4>
+        <p>Reglamento real del gimnasio firmado en pantalla (nombre y RUT) y descargable o enviado al socio.</p>
+      </div>
+      <div class="mod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4" stroke-linecap="round"/></svg></div>
+        <h4>Modo TV — Leaderboard</h4>
+        <p>Rankings en pantalla grande por ejercicio, categoría y sexo, con carrusel automático para la sala.</p>
+      </div>
+      <div class="mod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+        <h4>Asistencias y premios</h4>
+        <p>Registro de asistencias, meta mensual por plan y ruleta de premios con finalistas.</p>
+      </div>
+      <div class="mod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16v11H8l-4 3z" stroke-linejoin="round"/></svg></div>
+        <h4>Comunicación automática</h4>
+        <p>Mensajes a un clic por WhatsApp y correo: felicitaciones, recordatorios y cupones por racha.</p>
       </div>
     </div>
   </div>
@@ -1095,8 +1155,8 @@
       <div class="plan">
         <div class="pn">Presencia</div>
         <div class="pd">Web de presentación premium para destacar tu marca.</div>
-        <div class="pfrom">Desde</div>
-        <div class="pp">$890<small></small></div>
+        <div class="pfrom">Inversión</div>
+        <div class="pp">A cotizar</div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Diseño a medida (hasta 5 secciones)</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Adaptada a móvil y rápida</li>
@@ -1110,8 +1170,8 @@
         <div class="badge">Más elegido</div>
         <div class="pn">Sistema</div>
         <div class="pd">Web + panel de administración a medida para tu operación.</div>
-        <div class="pfrom">Desde</div>
-        <div class="pp">$2,400<small></small></div>
+        <div class="pfrom">Inversión</div>
+        <div class="pp">A cotizar</div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Todo lo de Presencia</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Panel de administración</li>
@@ -1125,8 +1185,8 @@
       <div class="plan">
         <div class="pn">Plataforma</div>
         <div class="pd">CRM o sistema integral completo, a la medida de tu empresa.</div>
-        <div class="pfrom">Cotización</div>
-        <div class="pp">A medida</div>
+        <div class="pfrom">Inversión</div>
+        <div class="pp">A cotizar</div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Todo lo de Sistema</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> CRM y automatizaciones</li>
